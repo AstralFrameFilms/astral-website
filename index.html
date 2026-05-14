@@ -54,7 +54,7 @@
     text-decoration: none;
   }
 
-  .header-logo svg { width: 52px; height: 28px; }
+  .header-logo svg { width: 70px; height: 37px; }
 
   .header-wordmark {
     font-family: var(--sans);
@@ -148,11 +148,19 @@
 
   /* ── HOME PAGE ── */
   #home {
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .home-hero {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 0;
+  }
+
+  #about-section {
+    padding: 0 48px 80px;
   }
 
   .logo-stage {
@@ -167,8 +175,8 @@
   /* The SVG mark container */
   .mark-wrap {
     position: relative;
-    width: 296px;
-    height: 160px;
+    width: 360px;
+    height: 188px;
     cursor: pointer;
   }
 
@@ -178,15 +186,14 @@
     overflow: visible;
   }
 
-  /* Star always visible */
-  .star-path {
-    opacity: 1;
+  .constellation-group {
     transition: transform 0.3s ease;
-    transform-origin: 148px 80px;
+    transform-box: fill-box;
+    transform-origin: center;
   }
 
-  .mark-wrap:hover .star-path {
-    transform: scale(1.12);
+  .mark-wrap:hover .constellation-group {
+    transform: scale(1.06);
   }
 
   /* Corner marks — start collapsed inward, expand on click */
@@ -686,6 +693,7 @@
 
     .page { padding: 120px 24px 80px; }
 
+    #about-section { padding: 0 24px 80px; }
     .about-hero { min-height: 60vh; padding-bottom: 48px; margin-bottom: 64px; }
     .about-cols, .team-row { grid-template-columns: 1fr; gap: 24px; }
     .about-col-label { display: none; }
@@ -698,7 +706,7 @@
       padding: 32px 24px;
     }
 
-    .mark-wrap { width: 222px; height: 120px; }
+    .mark-wrap { width: 270px; height: 141px; }
   }
 </style>
 </head>
@@ -707,12 +715,26 @@
 <!-- HEADER -->
 <header id="site-header">
   <div class="header-logo" onclick="showPage('home')">
-    <svg viewBox="0 0 74 40" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 12 L2 2 L12 2" fill="none" stroke="#ddd8cf" stroke-width="1.2" stroke-linecap="square"/>
-      <path d="M72 12 L72 2 L62 2" fill="none" stroke="#ddd8cf" stroke-width="1.2" stroke-linecap="square"/>
-      <path d="M2 28 L2 38 L12 38" fill="none" stroke="#ddd8cf" stroke-width="1.2" stroke-linecap="square"/>
-      <path d="M72 28 L72 38 L62 38" fill="none" stroke="#ddd8cf" stroke-width="1.2" stroke-linecap="square"/>
-      <path d="M37 14 L39 19.5 L44.5 21.5 L39 23.5 L37 29 L35 23.5 L29.5 21.5 L35 19.5 Z" fill="#ddd8cf"/>
+    <svg viewBox="192 76 296 150" xmlns="http://www.w3.org/2000/svg">
+      <path d="M216 122 L216 98 L240 98" fill="none" stroke="#ddd8cf" stroke-width="3" stroke-linecap="square"/>
+      <path d="M464 122 L464 98 L440 98" fill="none" stroke="#ddd8cf" stroke-width="3" stroke-linecap="square"/>
+      <path d="M216 178 L216 202 L240 202" fill="none" stroke="#ddd8cf" stroke-width="3" stroke-linecap="square"/>
+      <path d="M464 178 L464 202 L440 202" fill="none" stroke="#ddd8cf" stroke-width="3" stroke-linecap="square"/>
+      <line x1="297.5" y1="123.75" x2="350" y2="176.25" stroke="#ddd8cf" stroke-width="1.2" opacity="0.35"/>
+      <line x1="350" y1="176.25" x2="382.5" y2="156.25" stroke="#ddd8cf" stroke-width="1.2" opacity="0.35"/>
+      <line x1="382.5" y1="156.25" x2="362.5" y2="176.25" stroke="#ddd8cf" stroke-width="1.2" opacity="0.35"/>
+      <line x1="362.5" y1="176.25" x2="350" y2="163.75" stroke="#ddd8cf" stroke-width="1.2" opacity="0.35"/>
+      <line x1="350" y1="163.75" x2="357.5" y2="156.25" stroke="#ddd8cf" stroke-width="1.2" opacity="0.35"/>
+      <line x1="357.5" y1="156.25" x2="362.5" y2="161.25" stroke="#ddd8cf" stroke-width="1.2" opacity="0.35"/>
+      <line x1="362.5" y1="161.25" x2="360" y2="158.75" stroke="#ddd8cf" stroke-width="1.2" opacity="0.35"/>
+      <circle cx="297.5" cy="123.75" r="3.2" fill="#ddd8cf"/>
+      <circle cx="350" cy="176.25" r="2.6" fill="#ddd8cf"/>
+      <circle cx="382.5" cy="156.25" r="2.2" fill="#ddd8cf"/>
+      <circle cx="362.5" cy="176.25" r="1.8" fill="#ddd8cf"/>
+      <circle cx="350" cy="163.75" r="1.5" fill="#ddd8cf"/>
+      <circle cx="357.5" cy="156.25" r="1.2" fill="#ddd8cf"/>
+      <circle cx="362.5" cy="161.25" r="1" fill="#ddd8cf"/>
+      <circle cx="360" cy="158.75" r="0.8" fill="#ddd8cf"/>
     </svg>
     <span class="header-wordmark">Astral Frame</span>
   </div>
@@ -733,53 +755,64 @@
   <a onclick="showPage('work'); toggleMobileNav()">Work with Us</a>
 </div>
 
-<!-- HOME PAGE -->
-<div id="home" class="page active" style="display:flex;">
-  <div class="logo-stage">
-    <div class="mark-wrap" id="mark" onclick="revealLogo()">
-      <svg viewBox="0 0 296 160" xmlns="http://www.w3.org/2000/svg">
-        <!-- Corner TL -->
-        <g class="corner corner-tl">
-          <path d="M16 42 L16 16 L42 16" fill="none" stroke="#ddd8cf" stroke-width="2.5" stroke-linecap="square"/>
-        </g>
-        <!-- Corner TR -->
-        <g class="corner corner-tr">
-          <path d="M280 42 L280 16 L254 16" fill="none" stroke="#ddd8cf" stroke-width="2.5" stroke-linecap="square"/>
-        </g>
-        <!-- Corner BL -->
-        <g class="corner corner-bl">
-          <path d="M16 118 L16 144 L42 144" fill="none" stroke="#ddd8cf" stroke-width="2.5" stroke-linecap="square"/>
-        </g>
-        <!-- Corner BR -->
-        <g class="corner corner-br">
-          <path d="M280 118 L280 144 L254 144" fill="none" stroke="#ddd8cf" stroke-width="2.5" stroke-linecap="square"/>
-        </g>
-        <!-- Star centered at 148,80 -->
-        <path class="star-path" d="M148 60 L152.5 72 L165 76 L152.5 80 L148 92 L143.5 80 L131 76 L143.5 72 Z" fill="#ddd8cf"/>
-      </svg>
+<!-- HOME + ABOUT PAGE -->
+<div id="home" class="page active">
+  <div class="home-hero">
+    <div class="logo-stage">
+      <div class="mark-wrap" id="mark" onclick="revealLogo()">
+        <svg viewBox="192 76 296 150" xmlns="http://www.w3.org/2000/svg">
+          <g class="corner corner-tl">
+            <path d="M216 122 L216 98 L240 98" fill="none" stroke="#ddd8cf" stroke-width="1.5" stroke-linecap="square"/>
+          </g>
+          <g class="corner corner-tr">
+            <path d="M464 122 L464 98 L440 98" fill="none" stroke="#ddd8cf" stroke-width="1.5" stroke-linecap="square"/>
+          </g>
+          <g class="corner corner-bl">
+            <path d="M216 178 L216 202 L240 202" fill="none" stroke="#ddd8cf" stroke-width="1.5" stroke-linecap="square"/>
+          </g>
+          <g class="corner corner-br">
+            <path d="M464 178 L464 202 L440 202" fill="none" stroke="#ddd8cf" stroke-width="1.5" stroke-linecap="square"/>
+          </g>
+          <g class="constellation-group">
+            <line x1="297.5" y1="123.75" x2="350" y2="176.25" stroke="#ddd8cf" stroke-width="0.6" opacity="0.35"/>
+            <line x1="350" y1="176.25" x2="382.5" y2="156.25" stroke="#ddd8cf" stroke-width="0.6" opacity="0.35"/>
+            <line x1="382.5" y1="156.25" x2="362.5" y2="176.25" stroke="#ddd8cf" stroke-width="0.6" opacity="0.35"/>
+            <line x1="362.5" y1="176.25" x2="350" y2="163.75" stroke="#ddd8cf" stroke-width="0.6" opacity="0.35"/>
+            <line x1="350" y1="163.75" x2="357.5" y2="156.25" stroke="#ddd8cf" stroke-width="0.6" opacity="0.35"/>
+            <line x1="357.5" y1="156.25" x2="362.5" y2="161.25" stroke="#ddd8cf" stroke-width="0.6" opacity="0.35"/>
+            <line x1="362.5" y1="161.25" x2="360" y2="158.75" stroke="#ddd8cf" stroke-width="0.6" opacity="0.35"/>
+            <circle cx="297.5" cy="123.75" r="3.2" fill="#ddd8cf"/>
+            <circle cx="350" cy="176.25" r="2.6" fill="#ddd8cf"/>
+            <circle cx="382.5" cy="156.25" r="2.2" fill="#ddd8cf"/>
+            <circle cx="362.5" cy="176.25" r="1.8" fill="#ddd8cf"/>
+            <circle cx="350" cy="163.75" r="1.5" fill="#ddd8cf"/>
+            <circle cx="357.5" cy="156.25" r="1.2" fill="#ddd8cf"/>
+            <circle cx="362.5" cy="161.25" r="1" fill="#ddd8cf"/>
+            <circle cx="360" cy="158.75" r="0.8" fill="#ddd8cf"/>
+          </g>
+        </svg>
+      </div>
+      <div class="wordmark-block" id="wordmark">
+        <span class="wordmark-main">Astral Frame</span>
+        <span class="wordmark-divider"></span>
+        <span class="wordmark-sub">Films</span>
+      </div>
+      <span class="hint" id="hint">Click the star</span>
     </div>
-    <div class="wordmark-block" id="wordmark">
-      <span class="wordmark-main">Astral Frame</span>
-      <span class="wordmark-divider"></span>
-      <span class="wordmark-sub">Films</span>
+  </div>
+  <section id="about-section">
+    <div class="about-hero reveal">
+      <h1 class="about-statement" id="about-statement"></h1>
     </div>
-    <span class="hint" id="hint">Click the star</span>
-  </div>
-</div>
-
-<!-- ABOUT PAGE -->
-<div id="about" class="page">
-  <div class="about-hero reveal">
-    <h1 class="about-statement" id="about-statement"></h1>
-  </div>
-  <div class="about-cols reveal">
-    <span class="about-col-label">About</span>
-    <div class="about-col-body" id="about-body"></div>
-  </div>
-  <div class="team-row reveal">
-    <span class="about-col-label">The Team</span>
-    <div class="team-entries" id="team-entries"></div>
-  </div>
+    <div class="about-cols reveal">
+      <span class="about-col-label">About</span>
+      <div class="about-col-body" id="about-body"></div>
+    </div>
+    <div class="team-row reveal">
+      <span class="about-col-label">The Team</span>
+      <div class="team-entries" id="team-entries"></div>
+    </div>
+  </section>
   <footer>
     <span class="footer-copy">&copy; 2026 Astral Frame Films</span>
     <a href="mailto:nate@astralframefilms.com" class="footer-email">nate@astralframefilms.com</a>
@@ -834,9 +867,7 @@
       // Supports basic HTML tags like <em>, <strong>, <br>
       statement: 'Stories from the <em>edge of possibility.</em>',
       paragraphs: [
-        'Astral Frame Films is an independent production company dedicated to work that reaches beyond the surface — documentaries, narrative film, and commercial projects that carry genuine weight.',
-        'We believe in the power of deliberate craft. Every frame is considered. Every story is earned.',
-        'Based in Austin, Texas.'
+        'Astral Frame Films tells stories about connection. Whether it\'s electrifying genre films or scintillating documentaries, we seek to navigate beyond the frame of our images and look to the sky itself. Through our stories, we embrace what was, what is, and what could be.'
       ],
       team: [
         { name: 'Nathaniel Archer', role: 'Co-Founder' },
@@ -1014,6 +1045,24 @@
   }
 
   function showPage(id, skipHashUpdate) {
+    if (id === 'about') {
+      if (!skipHashUpdate) window.location.hash = 'about';
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+        p.style.display = 'none';
+      });
+      const home = document.getElementById('home');
+      home.style.display = 'block';
+      home.classList.add('active');
+      if (localStorage.getItem('logoSeen')) skipAnimation();
+      window.scrollTo(0, 0);
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      const navAbout = document.getElementById('nav-about');
+      if (navAbout) navAbout.classList.add('active');
+      setTimeout(() => document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' }), 100);
+      return;
+    }
+
     if (!skipHashUpdate) {
       window.location.hash = id;
     }
@@ -1025,7 +1074,8 @@
 
     const target = document.getElementById(id);
     if (id === 'home') {
-      target.style.display = 'flex';
+      target.style.display = 'block';
+      target.classList.add('active');
       if (localStorage.getItem('logoSeen')) {
         skipAnimation();
       } else {
@@ -1036,14 +1086,12 @@
       target.classList.add('active');
     }
 
-    // Update nav active state
     document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
     const navEl = document.getElementById('nav-' + id);
     if (navEl) navEl.classList.add('active');
 
     window.scrollTo(0, 0);
 
-    // Force reveals in viewport after render — 150ms gives browser time to paint
     setTimeout(() => {
       target.querySelectorAll('.reveal').forEach(el => {
         const rect = el.getBoundingClientRect();
