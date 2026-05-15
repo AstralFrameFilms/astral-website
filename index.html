@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Astral Frame Films</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -568,91 +569,104 @@
     margin: 0 auto;
   }
 
-  .work-heading {
-    font-family: var(--serif);
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--ink);
-    margin-bottom: 24px;
+  .work-section {
+    padding-bottom: 120px;
+    margin-bottom: 120px;
+    border-bottom: 1px solid var(--ink-faint);
   }
 
-  .work-sub {
+  .work-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .work-section-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .work-section-body {
     font-family: var(--serif);
     font-size: 18px;
     font-weight: 300;
     line-height: 1.8;
+    color: rgba(221,216,207,0.75);
+    margin-bottom: 12px;
+  }
+
+  .work-email {
     color: var(--ink-dim);
-    margin-bottom: 64px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink-faint);
+    transition: color 0.3s ease, border-color 0.3s ease;
   }
 
-  .form-row {
-    margin-bottom: 32px;
+  .work-email:hover { color: var(--ink); border-color: var(--ink-dim); }
+
+  .casting-info {
+    display: flex;
+    gap: 24px;
+    margin: 24px 0 32px;
+    flex-wrap: wrap;
   }
 
-  .form-label {
-    display: block;
+  .casting-info-item {
     font-family: var(--sans);
     font-size: 9px;
     font-weight: 200;
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: rgba(221,216,207,0.7);
-    margin-bottom: 10px;
+    color: var(--ink-faint);
   }
 
-  .form-input,
-  .form-textarea {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--ink-faint);
-    padding: 8px 0 12px;
+  .casting-list {
+    margin-top: 8px;
+  }
+
+  .casting-entry {
+    padding: 28px 0;
+  }
+
+  .casting-name {
     font-family: var(--serif);
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 300;
     color: var(--ink);
-    outline: none;
-    transition: border-color 0.3s ease;
-    caret-color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
   }
 
-  .form-input::placeholder,
-  .form-textarea::placeholder {
-    color: rgba(221,216,207,0.35);
-  }
-
-  .form-input:focus,
-  .form-textarea:focus {
-    border-bottom-color: var(--ink-dim);
-  }
-
-  .form-textarea {
-    resize: none;
-    min-height: 100px;
-  }
-
-  .form-submit {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 16px;
-    background: transparent;
-    border: 1px solid var(--ink-faint);
-    padding: 14px 32px;
+  .casting-type {
     font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 300;
-    letter-spacing: 3px;
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--ink);
-    cursor: pointer;
-    transition: background 0.3s ease, border-color 0.3s ease;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 16px;
   }
 
-  .form-submit:hover {
-    background: var(--ink-faint);
-    border-color: var(--ink-dim);
+  .casting-desc {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(221,216,207,0.65);
+  }
+
+  .casting-note {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 1.5px;
+    color: rgba(221,216,207,0.4);
+    font-style: italic;
   }
 
   /* ── FOOTER ── */
@@ -831,28 +845,47 @@
 <!-- WORK WITH US PAGE -->
 <div id="work" class="page">
   <div class="work-wrap">
-    <p class="page-label">Work with Us</p>
-    <h1 class="work-heading">Let's make something worth watching.</h1>
-    <p class="work-sub">Tell us about your project. We respond to every inquiry personally.</p>
-    <form onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <label class="form-label">Your Name</label>
-        <input class="form-input" type="text" placeholder="Full name" required />
+
+    <div class="work-section reveal">
+      <h2 class="work-section-title">Upcoming Auditions</h2>
+      <p class="work-section-body">The following roles are actively casting. If you're interested in auditioning for one of these roles, submit your headshot, resume, or socials to <a href="mailto:contact@astralframefilms.com" class="work-email">contact@astralframefilms.com</a></p>
+      <div class="casting-info">
+        <span class="casting-info-item">The Psychic Hour — Feature Film · Non-Union</span>
+        <span class="casting-info-item">Submission deadline: May 26</span>
+        <span class="casting-info-item">Auditions: May 29, 7 PM · May 31, 2 PM</span>
       </div>
-      <div class="form-row">
-        <label class="form-label">Email</label>
-        <input class="form-input" type="email" placeholder="your@email.com" required />
+      <div class="casting-list">
+        <div class="casting-entry">
+          <span class="casting-name">Kaia</span>
+          <span class="casting-type">Femme-identifying · 18+ to play late teens · Open ethnicity</span>
+          <p class="casting-desc">Kaia leads with confidence and humor, the kind of person who talks her way into anywhere and makes it look effortless. She's spontaneous, someone who loves without hesitation. Kaia is Perry's prom date. Their relationship is new, electric, and the emotional center of the film's opening.</p>
+          <span class="casting-note">This role requires a chase sequence and horror-style choreography.</span>
+        </div>
+        <div class="casting-entry">
+          <span class="casting-name">Perry</span>
+          <span class="casting-type">Femme-identifying · 18+ to play late teens · Open ethnicity</span>
+          <p class="casting-desc">Perry is deliberate and observant, someone who notices everything and says less than she thinks. She has been quietly in love with Kaia for longer than she'll admit. Their relationship becomes key to awakening her truest self.</p>
+        </div>
+        <div class="casting-entry">
+          <span class="casting-name">Ellen</span>
+          <span class="casting-type">Voice role · 18+</span>
+          <p class="casting-desc">Ellen is a senior, a little shallow but sharp and self-aware enough to know something is wrong with her best friend but not quite brave enough to confront it. She calls a psychic show on prom night, which tells you everything about where she's at.</p>
+          <span class="casting-note">This is a voice-only role, recorded remotely or in studio.</span>
+        </div>
       </div>
-      <div class="form-row">
-        <label class="form-label">Project Type</label>
-        <input class="form-input" type="text" placeholder="Documentary, Commercial, Narrative..." />
-      </div>
-      <div class="form-row">
-        <label class="form-label">Tell Us More</label>
-        <textarea class="form-textarea" placeholder="Brief description of your project or idea..."></textarea>
-      </div>
-      <button class="form-submit" type="submit">Send Inquiry →</button>
-    </form>
+    </div>
+
+    <div class="work-section reveal">
+      <h2 class="work-section-title">Astral Company</h2>
+      <p class="work-section-body">Astral Frame is always looking to build a consistent roster of actors and below-the-line talent. If you're interested in being the first to know about upcoming projects in development and working with us, submit your reel, resume, or socials to <a href="mailto:contact@astralframefilms.com" class="work-email">contact@astralframefilms.com</a></p>
+    </div>
+
+    <div class="work-section reveal">
+      <h2 class="work-section-title">Astral Hotline</h2>
+      <p class="work-section-body">See a story hiding in plain sight that should be a film — a community that should be highlighted, a ritual you've never heard of, or an interesting person you met at a bar one time? Astral Frame develops documentary projects that illuminate our larger Texas community.</p>
+      <p class="work-section-body">Send us the lead. Reach out to <a href="mailto:jocelyn@astralframefilms.com" class="work-email">jocelyn@astralframefilms.com</a></p>
+    </div>
+
   </div>
   <footer>
     <span class="footer-copy">&copy; 2026 Astral Frame Films</span>

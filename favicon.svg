@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#0a0a0a" rx="4"/>
+  <!-- Constellation lines -->
+  <line x1="4" y1="9" x2="19" y2="23" stroke="#ddd8cf" stroke-width="0.9" opacity="0.45"/>
+  <line x1="19" y1="23" x2="28" y2="18" stroke="#ddd8cf" stroke-width="0.9" opacity="0.45"/>
+  <line x1="28" y1="18" x2="22" y2="23" stroke="#ddd8cf" stroke-width="0.9" opacity="0.45"/>
+  <line x1="22" y1="23" x2="19" y2="20" stroke="#ddd8cf" stroke-width="0.9" opacity="0.45"/>
+  <line x1="19" y1="20" x2="21" y2="18" stroke="#ddd8cf" stroke-width="0.9" opacity="0.45"/>
+  <line x1="21" y1="18" x2="22" y2="19" stroke="#ddd8cf" stroke-width="0.9" opacity="0.45"/>
+  <line x1="22" y1="19" x2="22" y2="18" stroke="#ddd8cf" stroke-width="0.9" opacity="0.45"/>
+  <!-- Stars — sized to match the logo's hierarchy -->
+  <circle cx="4" cy="9" r="2" fill="#ddd8cf"/>
+  <circle cx="19" cy="23" r="1.6" fill="#ddd8cf"/>
+  <circle cx="28" cy="18" r="1.4" fill="#ddd8cf"/>
+  <circle cx="22" cy="23" r="1.1" fill="#ddd8cf"/>
+  <circle cx="19" cy="20" r="0.9" fill="#ddd8cf"/>
+  <circle cx="21" cy="18" r="0.75" fill="#ddd8cf"/>
+  <circle cx="22" cy="19" r="0.65" fill="#ddd8cf"/>
+  <circle cx="22" cy="18" r="0.5" fill="#ddd8cf"/>
+</svg>
